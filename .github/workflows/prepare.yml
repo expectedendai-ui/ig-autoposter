@@ -1,0 +1,38 @@
+name: Prepare media
+
+# Every time a photo or reel lands in images/ (or captions/plan change), make it
+# Instagram-ready in ready/ and refresh manifest.json. The worker reads the
+# manifest every hour and books each file on the next open slot.
+on:
+  push:
+    branches: [main]
+    paths: ["images/**", "plan.json", "captions.txt", "scripts/**", ".github/workflows/prepare.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prepare-media
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install tools
+        run: |
+          pip install --quiet pillow pillow-heif
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - name: Prepare media + manifest
+        run: python3 scripts/prepare.py
+      - name: Commit results
+        run: |
+          git config user.name "autoposter-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A ready manifest.json
+          git diff --cached --quiet && echo "nothing new" || git commit -m "prepare: refresh ready/ + manifest.json" && git push

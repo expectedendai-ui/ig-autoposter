@@ -1,0 +1,21 @@
+{
+  "platform": "instagram",
+  "generated": "2026-10-29T03:06:39+00:00",
+  "count": 1,
+  "items": [
+    {
+      "stem": "2026-01-05-example-carousel",
+      "file": "ready/2026-01-05-example-carousel/01.jpg",
+      "url": "https://raw.githubusercontent.com/your-user/your-repo/main/ready/2026-01-05-example-carousel/01.jpg",
+      "type": "CAROUSEL",
+      "children": [
+        "https://raw.githubusercontent.com/your-user/your-repo/main/ready/2026-01-05-example-carousel/01.jpg",
+        "https://raw.githubusercontent.com/your-user/your-repo/main/ready/2026-01-05-example-carousel/02.jpg"
+      ],
+      "caption": "This is an example carousel. Delete this folder and drop in your own.",
+      "date": "2026-01-05",
+      "source": "images/2026-01-05__example-carousel/",
+      "bytes": 48682
+    }
+  ]
+}

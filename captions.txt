@@ -1,0 +1,6 @@
+# Caption pool. One caption per block, blocks separated by a blank line. Lines starting with # are ignored.
+# Used in filename order for any post in images/ that has no caption of its own.
+
+New post. Caption from the pool. #yourhashtag
+
+Another caption from the pool. #yourhashtag

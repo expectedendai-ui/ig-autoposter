@@ -1,0 +1,1 @@
+This is an example carousel. Delete this folder and drop in your own.
